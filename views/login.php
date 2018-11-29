@@ -1,4 +1,10 @@
+<?php
+ if(!empty($_SESSION['user_id']))
+ {
+     header("Location: profile.php");
 
+ }
+?>
 <div class="container login">
    <div class="row">
       <div class="col-md-4 col-md-offset-4">
@@ -13,13 +19,31 @@
                
                <form accept-charset="UTF-8" role="form" action="<?=$_SERVER['PHP_SELF']?>" method="post">
                <?php
-                     if(isset($error))
+                     if(isset($error)||isset($credentials))
                      {
                         if(!empty($error))
                         {?>
                            <div class="error">
                            <div class="alert alert-danger">
-                              <strong>Error</strong><?=$error?>
+                              <strong>Error </strong><?=$error?>
+                           </div>
+                           </div>
+                        <?php
+                        }
+                        if(!empty($credentials['email'][0]))
+                        {?>
+                           <div class="error">
+                           <div class="alert alert-danger">
+                              <strong>Error </strong><?=$credentials['email'][0]?>
+                           </div>
+                           </div>
+                        <?php
+                        }
+                        if(!empty($credentials['password'][0]))
+                        {?>
+                           <div class="error">
+                           <div class="alert alert-danger">
+                              <strong>Error </strong><?=$credentials['password'][0]?>
                            </div>
                            </div>
                         <?php

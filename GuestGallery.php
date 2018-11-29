@@ -8,5 +8,6 @@ $data = [];
         'view_status'=>1,
     ]);
 
+    
 $viewobj->display('GuestGallery',$data);
 ?>

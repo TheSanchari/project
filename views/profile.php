@@ -1,13 +1,12 @@
 <?php
 $user_id = $_SESSION['user_id'];
-// if(empty($user_id))
-// {
-//         header("Location:index.php");
-// }
-// if(!empty($_SESSION['success']))
-// {
-//         echo $_SESSION['success'];
-// }
+$logged_in = FALSE;
+$logged_in = isset($user_id)??TRUE;
+
+if(!$logged_in)
+{
+  header("location: index.php");
+}
 
 
 ?>

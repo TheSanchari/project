@@ -1,21 +1,17 @@
 <?php
 $user_id =  $_SESSION['user_id'];
 $album_id = $_SESSION['album_id'];
+$logged_in = FALSE;
+$logged_in = isset($user_id)??TRUE;
+if(!$logged_in)
+{
+    header("Location: index.php");
+}
 $caption = [];
 $original_name = [];
 $location = 'images/thumbnail/thumb_';
-if(isset($images))
-{
-    if(!empty($images))
-    {  
-        foreach($images as $image)
-        {  
-            $caption[] = $image['caption'];
-            $image_name[] = $image['image_name'];
-        }
-       
-    }
-}
+$location_original = 'images/'; 
+
 ?>
 <style>
 
@@ -47,7 +43,7 @@ padding-right: 10px;
     <ul class="nav navbar-nav">
       <li class="active"><a href="profile.php">Album</a></li>
       <li><a href="GuestGallery.php">Guest Gallery</a></li>
-      <li><a href="#">Page 2</a></li>
+      <li><a href="logout.php">Logout</a></li>
       <li><a href="#">Page 3</a></li>
     </ul>
   </div>
@@ -79,7 +75,10 @@ padding-right: 10px;
                         <div class="col-xs-18 col-sm-6 col-md-3">
                                 <div class="thumbnail" >
                                     <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
-                                        <img src="<?=$location.$image['image_name']?>"class="img-responsive" alt="card-img-top">
+                                    <a href="<?=$location_original.$image['image_name']?>" data-fancybox data-caption="&lt;b&gt;Single photo&lt;/b&gt;&lt;br /&gt;Caption can contain &lt;em&gt;any&lt;/em&gt; HTML elements">
+                                    <img src="<?=$location.$image['image_name']?>"class="img-responsive" alt="card-img-top">
+                                    
+                                    </a>
                                             <div class="caption">   
                                                 <h4><?=$image['caption']?></h4>
                                                 <p>Caption...</p>

@@ -23,10 +23,7 @@ if($selected)
     $object->rules('password','required');
     // $object->exclude('login-submit');
     if($object->valid())
-     
-    
-    {   
-       
+    { 
             $user = new user();
             $result = $user->whereClause([
             'email'=>$_POST['email'],
@@ -41,17 +38,11 @@ if($selected)
           
              $data['error'] = "please enter valid credentials";
             // print_r($data);
-                
-               
-            
-
-    
-
-       
+                 
     }
 
-    $data =$object->geterror();
-
+    $data['credentials'] =$object->geterror();
+    
 }
 
 $obj->display('login',$data);

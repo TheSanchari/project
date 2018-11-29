@@ -165,8 +165,7 @@ class DB
      */
     public function whereClause(array $args) 
     {   $row = [];
-        // print_r($args);
-        
+        // print_r($args); 
         $this->arrayToClause($args);
 
         
@@ -269,6 +268,7 @@ class DB
     }
     return $status;
   }
+ 
    
 
 
